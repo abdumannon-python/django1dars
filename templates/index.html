@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Foydalanuvchilar Ro'yxati</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        .btn { padding: 5px 10px; text-decoration: none; background: #007bff; color: white; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <h2>Foydalanuvchilar Ro'yxati</h2>
+    <a href="{% url 'create_user' %}" style="margin-bottom: 10px; display: inline-block;">+ Yangi foydalanuvchi qo'shish</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Ism</th>
+                <th>Familiya</th>
+                <th>Amallar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.lastname }}</td>
+                <td>
+                    <a href="{% url 'detail' user.id %}" class="btn">Batafsil</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

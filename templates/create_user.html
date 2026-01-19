@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Yangi foydalanuvchi</title>
+    <style>
+        form { width: 300px; display: flex; flex-direction: column; gap: 10px; }
+        input, textarea { padding: 8px; }
+        button { background: green; color: white; padding: 10px; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2>Yangi foydalanuvchi qo'shish</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Ism" required>
+        <input type="text" name="lastname" placeholder="Familiya" required>
+        <input type="text" name="ID_kart" placeholder="ID karta raqami" required>
+        <input type="date" name="tugulgan_kun" required>
+        <textarea name="desc" placeholder="Tavsif yozing..." rows="4"></textarea>
+
+        <button type="submit">Saqlash</button>
+    </form>
+    <br>
+    <a href="{% url 'index' %}">Bekor qilish</a>
+</body>
+</html>
+<form method="POST">
+    {% csrf_token %}
+    </form>

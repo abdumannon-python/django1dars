@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ user.name }} haqida</title>
+</head>
+<body>
+    <h2>Foydalanuvchi ma'lumotlari</h2>
+    <p><strong>Ism:</strong> {{ user.name }}</p>
+    <p><strong>Familiya:</strong> {{ user.lastname }}</p>
+    <p><strong>ID karta:</strong> {{ user.ID_kart }}</p>
+    <p><strong>Tug'ilgan kuni:</strong> {{ user.tugulgan_kun }}</p>
+    <p><strong>Tavsif:</strong> {{ user.desc }}</p>
+    <br>
+    <a href="{% url 'index' %}">← Orqaga qaytish</a>
+</body>
+</html>
