@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <title>Foydalanuvchilar Ro'yxati</title>
     <style>
-        table { width: 100%; border-collapse: collapse; }
-        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
         th { background-color: #f4f4f4; }
-        .btn { padding: 5px 10px; text-decoration: none; background: #007bff; color: white; border-radius: 3px; }
+        .btn { padding: 8px 12px; text-decoration: none; border-radius: 4px; color: white; }
+        .btn-add { background-color: #28a745; margin-bottom: 10px; display: inline-block; }
+        .btn-detail { background-color: #007bff; }
     </style>
 </head>
 <body>
     <h2>Foydalanuvchilar Ro'yxati</h2>
-    <a href="{% url 'create_user' %}" style="margin-bottom: 10px; display: inline-block;">+ Yangi foydalanuvchi qo'shish</a>
+
+    <a href="{% url 'create_user' %}" class="btn btn-add">+ Yangi foydalanuvchi qo'shish</a>
 
     <table>
         <thead>
@@ -24,14 +27,18 @@
             </tr>
         </thead>
         <tbody>
-            {% for user in users %}
+            {% for u in user %}
             <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.name }}</td>
-                <td>{{ user.lastname }}</td>
+                <td>{{ u.id }}</td>
+                <td>{{ u.name }}</td>
+                <td>{{ u.lastname }}</td>
                 <td>
-                    <a href="{% url 'detail' user.id %}" class="btn">Batafsil</a>
+                    <a href="{% url 'detail' u.id %}" class="btn btn-detail">Batafsil</a>
                 </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">Hozircha foydalanuvchilar yo'q.</td>
             </tr>
             {% endfor %}
         </tbody>

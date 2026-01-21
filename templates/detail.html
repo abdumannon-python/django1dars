@@ -2,16 +2,39 @@
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
-    <title>{{ user.name }} haqida</title>
+    <title>{{ user.name }} - Batafsil</title>
+    <style>
+        .container { width: 50%; margin: 20px auto; font-family: sans-serif; border: 1px solid #ccc; padding: 20px; border-radius: 8px; }
+        .info-row { margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .label { font-weight: bold; color: #555; }
+        .back-btn { display: inline-block; margin-top: 20px; padding: 10px 15px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; }
+    </style>
 </head>
 <body>
-    <h2>Foydalanuvchi ma'lumotlari</h2>
-    <p><strong>Ism:</strong> {{ user.name }}</p>
-    <p><strong>Familiya:</strong> {{ user.lastname }}</p>
-    <p><strong>ID karta:</strong> {{ user.ID_kart }}</p>
-    <p><strong>Tug'ilgan kuni:</strong> {{ user.tugulgan_kun }}</p>
-    <p><strong>Tavsif:</strong> {{ user.desc }}</p>
-    <br>
-    <a href="{% url 'index' %}">← Orqaga qaytish</a>
+    <div class="container">
+        <h2>Foydalanuvchi ma'lumotlari</h2>
+        <hr>
+        <div class="info-row">
+            <span class="label">Ism:</span> {{ user.name }}
+        </div>
+        <div class="info-row">
+            <span class="label">Familiya:</span> {{ user.lastname }}
+        </div>
+        <div class="info-row">
+            <span class="label">ID Karta raqami:</span> {{ user.ID_kart }}
+        </div>
+        <div class="info-row">
+            <span class="label">Tug'ilgan kuni:</span> {{ user.tugulgan_kun }}
+        </div>
+        <div class="info-row">
+            <span class="label">Tavsif:</span>
+            <p>{{ user.desc }}</p>
+        </div>
+        <div class="info-row">
+            <span class="label">Qo'shilgan vaqti:</span> {{ user.create_at|date:"d.m.Y H:i" }}
+        </div>
+
+        <a href="{% url 'index' %}" class="back-btn">← Orqaga qaytish</a>
+    </div>
 </body>
 </html>

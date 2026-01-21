@@ -4,27 +4,50 @@
     <meta charset="UTF-8">
     <title>Yangi foydalanuvchi</title>
     <style>
-        form { width: 300px; display: flex; flex-direction: column; gap: 10px; }
-        input, textarea { padding: 8px; }
-        button { background: green; color: white; padding: 10px; border: none; cursor: pointer; }
+        .form-container { width: 400px; margin: 30px auto; font-family: sans-serif; }
+        .form-group { margin-bottom: 15px; display: flex; flex-direction: column; }
+        label { margin-bottom: 5px; font-weight: bold; }
+        input, textarea { padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        .submit-btn { background: #28a745; color: white; padding: 12px; border: none; cursor: pointer; border-radius: 4px; }
+        .back-link { display: block; margin-top: 15px; text-align: center; color: #555; }
     </style>
 </head>
 <body>
-    <h2>Yangi foydalanuvchi qo'shish</h2>
-    <form method="POST">
-        {% csrf_token %}
-        <input type="text" name="name" placeholder="Ism" required>
-        <input type="text" name="lastname" placeholder="Familiya" required>
-        <input type="text" name="ID_kart" placeholder="ID karta raqami" required>
-        <input type="date" name="tugulgan_kun" required>
-        <textarea name="desc" placeholder="Tavsif yozing..." rows="4"></textarea>
+    <div class="form-container">
+        <h2>Foydalanuvchi ma'lumotlari</h2>
 
-        <button type="submit">Saqlash</button>
-    </form>
-    <br>
-    <a href="{% url 'index' %}">Bekor qilish</a>
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>Ism:</label>
+                <input type="text" name="name" required placeholder="Ismni kiriting">
+            </div>
+
+            <div class="form-group">
+                <label>Familiya:</label>
+                <input type="text" name="lastname" required placeholder="Familiyani kiriting">
+            </div>
+
+            <div class="form-group">
+                <label>ID Karta raqami:</label>
+                <input type="number" name="ID_kart" required placeholder="Faqat raqamlar">
+            </div>
+
+            <div class="form-group">
+                <label>Tug'ilgan kuni:</label>
+                <input type="date" name="tugulgan_kun" required>
+            </div>
+
+            <div class="form-group">
+                <label>Tavsif:</label>
+                <textarea name="desc" rows="4" placeholder="Tavsif yozing..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Ma'lumotni saqlash</button>
+        </form>
+
+        <a href="{% url 'index' %}" class="back-link">Bekor qilish</a>
+    </div>
 </body>
 </html>
-<form method="POST">
-    {% csrf_token %}
-    </form>
